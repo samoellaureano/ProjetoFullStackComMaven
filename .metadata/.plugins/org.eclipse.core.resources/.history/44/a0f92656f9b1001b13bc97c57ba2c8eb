@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>ProjetoFullStack</display-name>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>br.com.estacionamento.rest</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+   </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+		<display-name>VerificaLogin</display-name>
+		<servlet-name>VerificaLogin</servlet-name>
+		<servlet-class>br.com.assistencia.servlet.VerificaLogin</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>VerificaLogin</servlet-name>
+		<url-pattern>/verificalogin</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>BuscaDadosSessao</display-name>
+		<servlet-name>BuscaDadosSessao</servlet-name>
+		<servlet-class>br.com.estacionamento.servlet.BuscaDadosSessao</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BuscaDadosSessao</servlet-name>
+		<url-pattern>/buscaDadosSessao</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<display-name>EncerraSessao</display-name>
+		<servlet-name>EncerraSessao</servlet-name>
+		<servlet-class>br.com.estacionamento.servlet.EncerraSessao</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EncerraSessao</servlet-name>
+		<url-pattern>/resources/logoff</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>FiltroConexao</filter-name>
+		<filter-class>br.com.estacionamento.filtroConexao.Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>FiltroConexao</filter-name>
+		<url-pattern>/resources/*</url-pattern>
+	</filter-mapping>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+</web-app>

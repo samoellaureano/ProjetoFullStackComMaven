@@ -1,0 +1,13 @@
+package br.com.fullstack.dao.jpa;
+
+import br.com.entidade.Fornecedor;
+import br.com.fullstack.dao.FornecedorDAO;
+
+public class FornecedorJPADAO extends JPAAbstract<Fornecedor> implements FornecedorDAO{
+
+	@Override
+	public String getEntityName() {
+		return "Empresa";
+	}
+
+}
